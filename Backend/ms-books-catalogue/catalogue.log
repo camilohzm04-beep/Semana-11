@@ -81,3 +81,4 @@ Hibernate: alter table if exists books add constraint UKkibbepcitr0a3cpk3rfr7nih
 2026-05-18T20:14:56.983-05:00  INFO 6980 --- [ms-books-catalogue] [nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2026-05-18T20:14:57.025-05:00  INFO 6980 --- [ms-books-catalogue] [nio-8081-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 40 ms
 Hibernate: select b1_0.id,b1_0.author,b1_0.category,b1_0.isbn,b1_0.publication_date,b1_0.rating,b1_0.stock,b1_0.title,b1_0.visible from books b1_0
+2026-05-18T20:15:25.459-05:00  INFO 6980 --- [ms-books-catalogue] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
