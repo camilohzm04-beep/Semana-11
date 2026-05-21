@@ -36,7 +36,7 @@ const CheckoutPage = () => {
       navigate("/home");
     } catch (error) {
       setPaymentError(
-        `${error.message}. Revisa que Eureka, Gateway y Payments esten levantados.`
+        `${error.message}. Levanta el Gateway y Payments para registrar el pago.`
       );
     } finally {
       setIsSubmitting(false);

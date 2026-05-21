@@ -6,19 +6,6 @@ export const API_GATEWAY_URL =
 const CATALOGUE_PATH = "/api/catalogue/books";
 const PAYMENTS_PATH = "/api/payments";
 
-export const gatewayRequests = [
-  {
-    service: "API Gateway",
-    method: "GET",
-    url: `${API_GATEWAY_URL}${CATALOGUE_PATH}`,
-  },
-  {
-    service: "API Gateway",
-    method: "POST",
-    url: `${API_GATEWAY_URL}${PAYMENTS_PATH}`,
-  },
-];
-
 const fallbackByIsbn = new Map(fallbackBooks.map((book) => [book.isbn, book]));
 const fallbackById = new Map(fallbackBooks.map((book) => [book.id, book]));
 

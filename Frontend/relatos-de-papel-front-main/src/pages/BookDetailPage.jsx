@@ -9,24 +9,25 @@ const BookDetailPage = () => {
   const { id } = useParams();
   const { addToCart } = useCart();
   const [book, setBook] = useState(null);
-  const [status, setStatus] = useState("loading");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     let isActive = true;
     const localBook = fallbackBooks.find((item) => item.id === Number(id));
 
-    setStatus("loading");
+    setIsLoading(true);
 
     getBookById(id)
       .then((gatewayBook) => {
         if (!isActive) return;
         setBook(gatewayBook);
-        setStatus("connected");
       })
       .catch(() => {
         if (!isActive) return;
         setBook(localBook || null);
-        setStatus(localBook ? "fallback" : "not-found");
+      })
+      .finally(() => {
+        if (isActive) setIsLoading(false);
       });
 
     return () => {
@@ -34,7 +35,7 @@ const BookDetailPage = () => {
     };
   }, [id]);
 
-  if (status === "loading") {
+  if (isLoading) {
     return (
       <div className="book-detail-page">
         <p>Consultando detalle por API Gateway...</p>
@@ -58,11 +59,6 @@ const BookDetailPage = () => {
       <Link to="/home" className="book-detail-page__back">
         &larr; Volver
       </Link>
-      {status === "fallback" && (
-        <p className="gateway-note">
-          No se pudo cargar el detalle desde gateway. Mostrando dato local.
-        </p>
-      )}
       <div className="book-detail-page__container">
         <div className="book-detail-page__image-container">
           <img src={book.image} alt={book.title} className="book-detail-page__image" />
